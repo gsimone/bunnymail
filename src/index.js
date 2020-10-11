@@ -111,7 +111,7 @@ function App({ defaultGroupSize = 25, defaultSeparator = 0 }) {
                 </span>
 
               </Block.Title>
-              <ContactsArea onChange={setContacts} />
+              <ContactsArea autoFocus onChange={setContacts} />
               
             </Block>
           </div>

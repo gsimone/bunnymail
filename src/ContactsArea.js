@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import uniq from "lodash.uniq";
@@ -7,16 +7,24 @@ function extractEmails(text) {
   return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
 }
 
-function ContactsArea({ onChange, placeholder = "Inserisci qui i contatti" }) {
+function ContactsArea({ autoFocus, onChange, placeholder = "Inserisci qui i contatti" }) {
   const handleChange = e => {
     const text = e.target.value;
     const emails = extractEmails(text);
     onChange(uniq(emails));
   };
 
+  const area = useRef()
+
+  useEffect(() => {
+    if (autoFocus) {
+      area.current.focus()
+    }
+  })
+
   return (
     <Container>
-      <textarea onChange={handleChange} placeholder={placeholder} />
+      <textarea ref={area} onChange={handleChange} placeholder={placeholder} />
     </Container>
   );
 }
