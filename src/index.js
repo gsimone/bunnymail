@@ -254,12 +254,19 @@ function LocalStorage() {
   }, [setDone])
 
   const { groupSize, separator } = useMemo(() => {
-    const {groupSize, separator} =  JSON.parse(window.localStorage.getItem('email-settings'))
+    const storage =  window.localStorage.getItem('email-settings')
 
+    if (storage) {
+      const {groupSize, separator} = JSON.parse(storage)
+    
     return {
-      groupSize,
-      separator: Number(separator)
+        groupSize,
+        separator: Number(separator)
+      }
     }
+
+    return {}
+    
   })
 
   return done ? <App defaultGroupSize={groupSize} defaultSeparator={separator} /> : null
