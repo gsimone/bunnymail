@@ -20,7 +20,7 @@ function ContactsArea({ autoFocus, onChange, placeholder = "Inserisci qui i cont
     if (autoFocus) {
       area.current.focus()
     }
-  }, [])
+  }, [autoFocus])
 
   return (
     <Container>

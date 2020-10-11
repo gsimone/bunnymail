@@ -21,7 +21,7 @@ function Group({ separator, contacts, onDone, done }) {
     copy(contacts.join(SEPARATORS[separator][0]));
 
     setCopied(true);
-  }, [contacts, setCopied]);
+  }, [contacts, setCopied, separator]);
 
   React.useEffect(() => {
     let t;

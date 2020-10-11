@@ -267,7 +267,7 @@ function LocalStorage() {
 
     return {}
     
-  })
+  }, [])
 
   return done ? <App defaultGroupSize={groupSize} defaultSeparator={separator} /> : null
 
